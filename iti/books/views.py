@@ -10,8 +10,8 @@ import os.path
 # def index(request):
 #     return HttpResponse("<h1>hello world</h1>")
 
-# def welcome(request,books_id):
-#     return HttpResponse(f"welcome{books_id}")
+def welcome(request):
+    return HttpResponse("<h1>welcome in book store</h1>")
 
 
 # def welcome(request,books_id):

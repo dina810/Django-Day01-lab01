@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index,get_single_books
+from .views import index,get_single_books,welcome
 urlpatterns = [
     path('',index),
     # path('<int:books_id>',get_single_books),
