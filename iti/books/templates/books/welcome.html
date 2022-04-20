@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>books</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'books/style.css' %}">
+
 </head>
 <body>
 <!--        welcome book {{id}}-->
 
          <img src="{% static 'books/images'|add:'/'|add:book.image %}" style="width: 100%; border-radius: 10px;">
-        <h4>Book ID : {{book.id}}</h4>
-        <h4>Book Title : {{book.name}}</h4>
-        <h4> Book Decription :  {{book.description}}</h4>
+        <h4> ID : {{book.id}}</h4>
+        <h4> Title : {{book.name}}</h4>
+        <h4>  Decription :  {{book.description}}</h4>
 
 </body>
 </html>
