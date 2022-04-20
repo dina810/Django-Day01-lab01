@@ -11,8 +11,10 @@
 <body>
 <!--        welcome book {{id}}-->
 
-         {% for data in book %}
-            <h1> {{data}}:</h1>
-         {% endfor %}
+         <img src="{% static 'books/images'|add:'/'|add:book.image %}" style="width: 100%; border-radius: 10px;">
+        <h4>Book ID : {{book.id}}</h4>
+        <h4>Book Title : {{book.name}}</h4>
+        <h4> Book Decription :  {{book.description}}</h4>
+
 </body>
 </html>
