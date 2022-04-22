@@ -2,6 +2,7 @@
 {% load static%}
 {% block content %}
 
+<a href="{% url 'author_info' book.author.id %}">{{book.author}}</a>
         <h4> name : {{book.name}}</h4>
         <h4> Publish Date : {{book.publish_date}}</h4>
         <h4>  added to site at :  {{book.add_to_site_at}}</h4>
