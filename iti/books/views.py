@@ -39,3 +39,6 @@ def author(request,author_id):
 def any(request):
     return HttpResponse("Any") 
     
+
+def new(request):
+    return render(request, books/book_create.html)

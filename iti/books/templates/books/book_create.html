@@ -1,0 +1,17 @@
+{% extends 'books/base.html' %} 
+{% load static%}
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+     name : <input type="text" name="name"/><br/>
+     Publish Date : <input type="text" name="Publish Date"/><br/>
+     added to site at : <input type="text" name="added to site at"/><br/>
+     book price : <input type="text" name="book price"/><br/>
+     appropriate : <input type="text" name="appropriate"/><br/>
+     Author : <input type="text" name="Author"/><br/>
+
+
+
+</form>
+        {%endblock%}
