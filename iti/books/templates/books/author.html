@@ -1,0 +1,17 @@
+{% extends 'books/base.html' %} 
+{% load static %}
+{% block title %}  {%endblock%}
+{% block content %}
+
+    <h1>welcome to {{author}} page</h1>
+    
+        <tr>
+          <th>Books</th>
+        </tr>
+          {% for book in books %}
+          <tr>
+          <td><a href= "{% url 'book_info' book.id %}">{{book.name}}</a></td>
+        </tr>
+          {% endfor %}
+        
+{%endblock%}

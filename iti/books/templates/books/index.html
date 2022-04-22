@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>books</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'books/style.css' %}">
-</head>
-<body>
+{%extends 'books/base.html' %}
+{% load static%}
+{% block content %}
 
     <ul>
         {% for book in books %}
-        <li><a  href="/books/{{book.id}}">{{book.name}}</a></li>
-<!--        <img src="{% static '/books/images' %}">-->
+        <li><a  href="{% url 'book_info' book.id %}">{{book.name}}</a></li>
+
         {% endfor %}
 
 </ul>
-</body>
-</html>
+{% endblock %}

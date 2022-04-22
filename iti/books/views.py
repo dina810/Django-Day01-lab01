@@ -1,60 +1,41 @@
-from django.shortcuts import render
+from pydoc import describe
+from django.shortcuts import render , get_object_or_404
+import json,os
+from multiprocessing import context
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.conf import settings
-import json
-import os.path
+from .models import Book
+from .models import Author
 
 
 
-# def index(request):
-#     return HttpResponse("<h1>hello world</h1>")
-
-def welcome(request):
-    return HttpResponse("<h1>welcome in book store</h1>")
-
-
-# def welcome(request,books_id):
-#     context = {
-#             "id":books_id
-#         }
-#     return render(request,"books/welcome.html",context=context)
-
-
-# books=[
-#         {"id": 1, "name": "Book1", "description": "Book1 decs", "image": ""},
-#         {"id": 2, "name": "Book2", "description": "Book2 decs", "image": ""},
-#         {"id": 3, "name": "Book3", "description": "Book3 decs", "image": ""},
-#         {"id": 4, "name": "Book4", "description": "Book4 decs", "image": ""},
-#         {"id": 5, "name": "Book5", "description": "Book5 decs", "image": ""},
-#         {"id": 6, "name": "Book6", "description": "Book6 decs", "image": ""}
-#
-#     ]
-
-####################################################################################################################
-# def index(request):
-#     return render(request,"books/index.html")
-
-def get_books():
-    books = os.path.join(settings.BASE_DIR) + "/books.json"
-    with open(books, 'r') as file:
-        data = json.load(file)
-    return data
-
-
+# Create your views here.
 def index(request):
-    books = get_books()
+
     context = {
-        "books" : books
+        "books": Book.objects.all()
+
     }
-    return render(request, "books/index.html",context=context)
+    return render(request,"books/index.html", context=context)
 
+def book(request,book_id):
+    book=get_object_or_404(Book,id=book_id)
+    context= {
+        "book":book,
+        "img":os.path.basename(book.img.__str__())
+    }
 
-def get_single_books(request, id):
-    books = get_books()
-    selected_book = {}
-    for book in books:
-        if book["id"] == id:
-            selected_book = book
-    context = {"book" : selected_book}
-    return render(request, "books/welcome.html",context=context)
+    
+    return render(request,"books/book.html", context=context)
+
+def author(request,author_id):
+    books=Book.objects.filter(author=author_id).all()
+    context= {
+        "author":books[0].author,
+        "books":books
+    
+    }
+    return render(request,"books/author.html", context=context)
+    
+def any(request):
+    return HttpResponse("Any") 
+    

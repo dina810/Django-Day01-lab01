@@ -1,8 +1,11 @@
 from django.urls import path
-from .views import index,get_single_books,welcome
-urlpatterns = [
-    path('',index),
-    # path('<int:books_id>',get_single_books),
-    path('<int:id>',get_single_books),
+from .views import index
+from .views import book
+from .views import author
 
+
+urlpatterns = [
+    path('',index , name="home"),
+    path('<int:book_id>', book, name="book_info"),
+    path('author/<int:author_id>',author,name="author_info")
 ]
